@@ -5,13 +5,10 @@ Thank you for your interest in contributing to our project :sparkles:. We apprec
 ## Table of Contents
 
 1. [Code of Conduct](#code-of-conduct)
-2. [How to Contribute](#how-to-contribute)
+2. [Contributing via Pull Requests](#contributing-via-pull-requests)
 3. [Google-Style Docstrings](#google-style-docstrings)
 4. [Development Setup](#development-setup)
 5. [Reporting Bugs](#reporting-bugs)
-6. [GitHub Actions CI Tests](#github-actions-ci-tests)
-    
-
 
 ## Code of Conduct
 
@@ -34,7 +31,12 @@ git clone https://github.com/your-username/project.git
 git checkout -b feature/your-feature-name
 ```
 
-4. **Make your changes**: Implement your changes, following the project's coding style and guidelines. Ensure that your code is well-documented and includes appropriate tests.
+4. **Add your model**: Add your own model, following the project's coding style and guidelines. Ensure that your code is well-documented and includes appropriate tests. Your model should include the following structure (see the example model in models/text/example_text_model):
+```
+Dockerfile - Dockerfile to run your model's prediction
+main.py - Your model's prediction function
+requirements.txt - Required libraries for your model
+```
 
 5. **Commit your changes**: Commit your changes with a clear and descriptive commit message. Use the following commands:
 ```
@@ -51,6 +53,31 @@ git push origin feature/your-feature-name
 
 8. **Address feedback**: Our maintainers will review your pull request and provide feedback. Please be responsive to their comments and make the necessary changes to improve your contribution.
 
+## Google-Style Docstrings
+When adding a new model, include a Google-style docstring to provide clear and concise documentation. This makes it easier for other developers to understand and work with your code later.
+```python
+def calculate_average(numbers: List[float]) -> float:
+    """Calculates the average of a list of numbers.
+
+    Args:
+        numbers: The list of numbers to calculate the average of.
+
+    Returns:
+        The average of the input numbers.
+
+    Raises:
+        ValueError: If the input list is empty.
+
+    Example:
+        >>> numbers = [1.0, 2.0, 3.0, 4.0, 5.0]
+        >>> calculate_average(numbers)
+        3.0
+    """
+    if not numbers:
+        raise ValueError("Input list cannot be empty.")
+    return sum(numbers) / len(numbers)
+```
+
 ## Development Setup
 
 To set up the development environment for this project, please follow the instructions in the [README](README.md) file.
@@ -58,11 +85,3 @@ To set up the development environment for this project, please follow the instru
 ## Reporting Bugs
 
 If you encounter any bugs, have feature requests, or want to discuss improvements, please **open an issue** on our GitHub repository. When reporting bugs, provide a clear and concise description of the problem, along with steps to reproduce it. Include any relevant error messages or screenshots to help us understand and resolve the issue more effectively.
-
-
-## GitHub Actions CI Tests
-
-Before your pull request can be merged, all tests run by GitHub Actions must pass.
-These tests run unit tests and make sure your changes meet the project's standards.
-Please check the results from the GitHub Actions and fix any problems that come up.
-
