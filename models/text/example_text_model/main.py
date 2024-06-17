@@ -44,10 +44,11 @@ def predict(test_input):
     }
     return result
 
-test_input = {
-    "input": {
-        "text": "example text"
+if __name__ == "__main__":
+    test_input = {
+        "input": {
+            "text": "example text"
+        }
     }
-}
-out = predict(test_input)
-print(out)
+    out = predict(test_input)
+    print(out)
