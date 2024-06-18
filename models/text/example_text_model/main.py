@@ -50,5 +50,5 @@ if __name__ == "__main__":
             "text": "example text"
         }
     }
-    output = predict(test_input)
-    print(output)
+    out = predict(test_input)
+    print(out)
