@@ -20,7 +20,9 @@ jobs:
 
     - name: Run Python script
       env:
-        DOCKER_IMAGE_REPO: ${{ secrets.DOCKER_IMAGE_REPO }}
+        CELERY_IP: ${{ secrets.CELERY_IP }}
+        CELERY_PORT: ${{ secrets.CELERY_PORT }}
+        CELERY_NAME: ${{ secrets.CELERY_NAME }}
       run: |
         echo "Installing dependecies"
         pip install -r requirements.txt
