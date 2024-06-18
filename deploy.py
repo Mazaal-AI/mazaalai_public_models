@@ -20,7 +20,7 @@ def deploy_public_model(changed_models):
 
 if __name__ == "__main__":
     changed_files = sys.argv[1:]
-    changed_models = [Path(x).parents[-3] for x in changed_files if x.startswith("models/")]
+    changed_models = [str(Path(x).parents[-4]) for x in changed_files if x.startswith("models/")]
     changed_models = list(set(changed_models))
     print(changed_models)
     if changed_models != []:
