@@ -23,6 +23,8 @@ jobs:
         CELERY_IP: ${{ secrets.CELERY_IP }}
         CELERY_PORT: ${{ secrets.CELERY_PORT }}
         CELERY_NAME: ${{ secrets.CELERY_NAME }}
+        CELERY_WORKER: ${{ secrets.CELERY_WORKER }}
+        CELERY_TASK: ${{ secrets.CELERY_TASK }}
       run: |
         echo "Installing dependecies"
         pip install -r requirements.txt
