@@ -1,0 +1,33 @@
+name: Public_model_automation
+
+on:
+  push:
+    branches:
+      - main
+      - 7-add-github-action
+
+jobs:
+  celery_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v35
+
+    - name: Run Python script
+      env:
+        CELERY_IP: ${{ secrets.CELERY_IP }}
+        CELERY_PORT: ${{ secrets.CELERY_PORT }}
+        CELERY_NAME: ${{ secrets.CELERY_NAME }}
+        CELERY_WORKER: ${{ secrets.CELERY_WORKER }}
+        CELERY_TASK: ${{ secrets.CELERY_TASK }}
+      run: |
+        echo "Installing dependecies"
+        pip install -r requirements.txt
+        python deploy.py ${{ steps.changed-files.outputs.all_changed_files }}
+
+  
